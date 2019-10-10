@@ -3,7 +3,7 @@ With Udemy
 
 2019 
 
-Oct 5
+Oct 10
 
 
 python manage.py runserver 
