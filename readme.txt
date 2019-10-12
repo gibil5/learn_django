@@ -1,7 +1,7 @@
 
 Learn Django - With Udemy
 ---------------------------
-10 Oct 2019 
+12 Oct 2019 
 
 
 Rutter
