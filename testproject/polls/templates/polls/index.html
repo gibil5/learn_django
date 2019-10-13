@@ -1,3 +1,5 @@
+
+
 {% extends "polls/base.html" %}
 
 {% block main_content %}
@@ -8,6 +10,7 @@
 	<ul>
 		{% for question in latest_question_list %}
 			<li>
+
 				<a href='{% url "polls:detail" question.id %}'>
 
 					{{question.question_text}}

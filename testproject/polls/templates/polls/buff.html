@@ -1,3 +1,13 @@
-<!--		
-				<a href='/polls/{{question.id}}/'>
+
+
+				<a href='{% url "polls:detail" question.id %}'>
+
+<form 	action="{% url 'polls:vote' question.id %}" method="post">
+
+
+
+
+
+<!--
+	<meta charset="UTF-8">
 -->

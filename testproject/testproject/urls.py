@@ -23,6 +23,8 @@ urlpatterns = [
 
 	path('admin/', admin.site.urls),
 
-	#url(r'^polls/', include('polls.urls', namespace="polls"))  	# Dep
+  		
+	#url(r'^polls/', include('polls.urls'))
+	#url(r'^polls/', include('polls.urls', namespace="polls"))  			# Dep
 	url(r'^polls/', include(('polls.urls', 'polls'), namespace="polls"))
 ]
