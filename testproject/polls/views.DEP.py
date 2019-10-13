@@ -37,3 +37,13 @@ def detail(request, question_id):
 
 
 
+def vote(request, question_id):
+	#return HttpResponse('Vote on question: %s ' % question_id)
+
+
+
+def results(request, question_id):
+	return HttpResponse('This the results of the question: %s ' % question_id)
+
+
+

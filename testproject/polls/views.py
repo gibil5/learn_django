@@ -10,9 +10,17 @@
 		- Use shortcuts.
 """
 
+from django.shortcuts import render, get_object_or_404
+
+
 from django.http import HttpResponse, Http404
 
-from django.shortcuts import render, get_object_or_404
+
+from django.http import HttpResponseRedirect
+
+#from django.core.urlresolvers import reverse
+from django.urls import reverse
+
 
 from .models import Question
 
@@ -39,26 +47,57 @@ def detail(request, question_id):
 	print()
 	print('Polls - Detail')
 
-
 	question = get_object_or_404(Question, pk=question_id)  		# Shortcut !
-
 
 	ctx = {'question': question,}
 	return	render(request, 'polls/detail.html', ctx)
 
 
 
-
-
-
-
 def results(request, question_id):
 	print()
 	print('Polls - Results')
-	return HttpResponse('This the results of the question: %s ' % question_id)
+
+	question = get_object_or_404(Question, pk=question_id)  		# Shortcut !
+
+	ctx = {'question': question,}
+	return	render(request, 'polls/results.html', ctx)
+
+
+
 
 def vote(request, question_id):
 	print()
 	print('Polls - Vote')
-	return HttpResponse('Vote on question: %s ' % question_id)
+
+
+	p = get_object_or_404(Question, pk=question_id)  		# Shortcut !
+
+
+	try:
+		selected_choice = p.choice_set.get(pk=request.POST['choice']) 
+
+
+	except (KeyError, Choice.DoesNotExist):
+		context = {
+					'question': p,
+					'error_message': 'You didnt select a choice yet !',
+		}
+		return render(request, 'polls/detail.html', context)
+	
+
+	else:
+
+		selected_choice.votes += 1
+
+		selected_choice.save()
+
+		return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+	
+
+
+
+
+
+
 
