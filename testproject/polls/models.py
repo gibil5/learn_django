@@ -1,5 +1,4 @@
 from django.db import models
-
 from django.utils import timezone
 import datetime
 
@@ -14,13 +13,18 @@ class Question(models.Model):
 
 
 	def __str__(self): 
-
 		return self.question_text
+
 
 
 	def was_published_in_the_last_7_days(self):
 
-		return self.pub_date >= timezone.now() - datetime.timedelta(days=7)
+		now = timezone.now()
+
+		#return self.pub_date >= timezone.now() - datetime.timedelta(days=7)
+
+		return	timezone.now() - datetime.timedelta(days=7) <= self.pub_date <= now
+
 
 
 	was_published_in_the_last_7_days.admin_order_field = 'pub_date'
@@ -44,7 +48,6 @@ class Choice(models.Model):
 		)
 
 
-	def __str__(self): 
-
+	def __str__(self):
 		return self.choice_text
 

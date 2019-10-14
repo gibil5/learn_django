@@ -1,3 +1,50 @@
+# 14 Oct
+def index(request):
+	print()
+	print('Polls - Index')
+
+	latest_question_list = Question.objects.order_by('-pub_date')[:5]
+	print(latest_question_list)
+
+	ctx = {'latest_question_list': latest_question_list,}
+	output = render(request, 'polls/index.html', ctx)
+
+	return HttpResponse(output)
+
+
+def detail(request, question_id):
+	print()
+	print('Polls - Detail')
+
+	# Get Object
+	question = get_object_or_404(Question, pk=question_id)  		# Shortcut !
+
+	ctx = {'question': question,}
+	return	render(request, 'polls/detail.html', ctx)
+
+
+
+def results(request, question_id):
+	print()
+	print('Polls - Results')
+
+	question = get_object_or_404(Question, pk=question_id)  		# Shortcut !
+
+	ctx = {'question': question,}
+	return	render(request, 'polls/results.html', ctx)
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 12 Oct 2019
 
 #from django.template import loader, RequestContext
