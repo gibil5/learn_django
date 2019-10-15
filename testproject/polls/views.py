@@ -2,7 +2,6 @@
 	Polls - Views
 
 	Created on: 	11 Oct 2019
-
 	Last up: 		11 Oct 2019
 
 	Important:
