@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # jx
     'polls',
+    'hanuman',
 
     'django.contrib.admin',
     'django.contrib.auth',

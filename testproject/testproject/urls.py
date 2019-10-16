@@ -1,4 +1,6 @@
-"""testproject URL Configuration
+"""
+Project - testproject 
+URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
 	https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -18,12 +20,28 @@ from django.urls import path
 from django.conf.urls import include, url
 
 
+from django.http import HttpResponseRedirect
+
+
 urlpatterns = [
 
-	path('admin/', admin.site.urls),
+	# Root
+	#url(r'^', include('polls.urls')), #NOTE: without $
+	#url(r'^$', lambda r: HttpResponseRedirect('polls/')),
+	url(r'^$', lambda r: HttpResponseRedirect('hanuman/')),
 
+
+	# Hanuman
+	url(r'^hanuman/', include(('hanuman.urls', 'hanuman'), namespace="hanuman")),
+
+
+
+	# Admin
+	path('admin/', admin.site.urls),
   		
+
+	# Polls
 	#url(r'^polls/', include('polls.urls'))
 	#url(r'^polls/', include('polls.urls', namespace="polls"))  			# Dep
-	url(r'^polls/', include(('polls.urls', 'polls'), namespace="polls"))
+	url(r'^polls/', include(('polls.urls', 'polls'), namespace="polls")),
 ]
