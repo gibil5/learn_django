@@ -2,7 +2,7 @@
 Learn Django - With Udemy
 ---------------------------
 Oct 2019 
-16
+17
 
 
 Using a Virtual Environment. 
